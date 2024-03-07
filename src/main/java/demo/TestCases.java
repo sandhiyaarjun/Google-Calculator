@@ -54,15 +54,23 @@ public class TestCases {
         System.out.println("Start Test case: testCase01");
         driver.get("https://www.google.com");
 
+        String url = driver.getCurrentUrl();
+        String expected = "https://www.google.com";
+
+        if (url.contains(expected)) {
+            System.out.println("Verifying url displays");
+
+        }
+
         WebElement searchBar = driver.findElement(By.xpath("//textarea[@aria-label='Search']"));
         searchBar.sendKeys("calculator");
         searchBar.submit();
         WebElement textZero = driver.findElement(By.xpath("//div[@jsname='DjP6yd']/div"));
 
         String title0 = textZero.getText();
-        String expected = "0";
+        String expectedValue = "0";
 
-        if (title0.contains(expected)) {
+        if (title0.contains(expectedValue)) {
             System.out.println("Verifying: " + expected);
 
         }
